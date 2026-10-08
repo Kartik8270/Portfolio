@@ -1,0 +1,554 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kartik Jain Dev Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: terminal hero (profile.json plus a to-scale ASCII chart), engineering principles, two flagship case studies, three featured cards, a compact list of smaller projects, then stack, current work, roles and contact. Dark first, light as the alternate. */
+:root {
+  --bg: #0A0F1C;
+  --panel: #101728;
+  --panel-2: #151E34;
+  --ink: #DCE4F2;
+  --muted: #8392AD;
+  --line: #1F2A44;
+  --accent: #FFB454;
+  --accent-ink: #1A1100;
+  --key: #7EA6FF;
+  --str: #8ED6A9;
+  --kw: #C3A6FF;
+  --f-display: "Chakra Petch", "Arial Narrow", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F4F6FA; --panel: #FFFFFF; --panel-2: #EDF1F8; --ink: #131A2A; --muted: #556178; --line: #D5DCE8;
+    --accent: #A95700; --accent-ink: #FFFFFF; --key: #2650C7; --str: #1C7447; --kw: #6B3FC4;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F4F6FA; --panel: #FFFFFF; --panel-2: #EDF1F8; --ink: #131A2A; --muted: #556178; --line: #D5DCE8;
+  --accent: #A95700; --accent-ink: #FFFFFF; --key: #2650C7; --str: #1C7447; --kw: #6B3FC4;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; padding-inline: 18px; padding-block: 0 56px; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1060px; margin-inline: auto; }
+
+/* top bar */
+.bar { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; padding-block: 20px; font-family: var(--f-mono); font-size: 13px; border-bottom: 1px solid var(--line); }
+.bar .path { color: var(--muted); }
+.bar .path b { color: var(--accent); font-weight: 500; }
+.bar nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.bar nav a { text-decoration: none; color: var(--muted); }
+.bar nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; padding-block: 48px 48px; }
+.hero-top { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px 48px; align-items: start; }
+.who { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.2rem, 5.6vw, 3.8rem); line-height: 1.02; letter-spacing: -.01em; margin: 0 0 18px; text-wrap: balance; }
+h1 .hl { color: var(--accent); }
+.roles { font-family: var(--f-mono); font-size: 13px; color: var(--kw); margin: 0 0 18px; }
+.lede { margin: 0 0 14px; max-width: 56ch; color: var(--muted); font-size: 1.02rem; }
+.lede b { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: 1px solid var(--line); border-radius: 4px; font-family: var(--f-mono); font-size: 13px; text-decoration: none; color: var(--ink); background: var(--panel); cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 500; }
+.btn.primary:hover { filter: brightness(1.08); color: var(--accent-ink); }
+
+/* terminal window */
+.term { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; min-width: 0; overflow: hidden; }
+.term-bar { display: flex; align-items: center; gap: 8px; padding: 9px 14px; background: var(--panel-2); border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.term-bar i { width: 9px; height: 9px; border-radius: 2px; background: var(--line); display: inline-block; flex: none; }
+.term-bar span { margin-left: 8px; min-width: 0; overflow-wrap: anywhere; }
+.term pre { margin: 0; padding: 16px 16px 18px; font-family: var(--f-mono); font-size: 13px; line-height: 1.7; overflow-x: auto; color: var(--ink); }
+.k { color: var(--key); }
+.s { color: var(--str); }
+.n { color: var(--accent); }
+.c { color: var(--muted); }
+.kw { color: var(--kw); }
+
+.chart { display: grid; gap: 10px; }
+.chart h2 { margin: 0; font-family: var(--f-mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.chart .term pre { font-size: 12.5px; }
+.bar-a { color: var(--muted); }
+.bar-b { color: var(--accent); }
+.chart p { margin: 0; font-size: 14px; color: var(--muted); max-width: 60ch; }
+.chart p b { color: var(--ink); font-weight: 600; }
+
+/* sections */
+section { padding-block: 52px 4px; border-top: 1px solid var(--line); }
+h2.sec { font-family: var(--f-display); font-weight: 600; font-size: 1.6rem; letter-spacing: -.005em; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+h2.sec .cmd { font-family: var(--f-mono); font-size: 13px; font-weight: 400; color: var(--muted); }
+.sec-note { color: var(--muted); margin: 0 0 22px; max-width: 64ch; }
+
+/* principles */
+.principles { list-style: none; margin: 0; padding: 6px 18px; }
+.principles li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 2px 14px; padding-block: 14px; border-top: 1px solid var(--line); }
+.principles li:first-child { border-top: 0; }
+.principles .no { font-family: var(--f-mono); font-size: 13px; color: var(--accent); padding-top: 3px; }
+.principles h3 { font-family: var(--f-display); font-weight: 600; font-size: 1.08rem; margin: 0; }
+.principles p { margin: 0; color: var(--muted); font-size: 15px; grid-column: 2; }
+
+/* cards */
+.stackcol { display: grid; gap: 18px; }
+.repos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; min-width: 0; }
+.card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 12px; margin-bottom: 10px; }
+.card h3 { font-family: var(--f-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; margin: 0; }
+.track { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.card p { margin: 0 0 12px; font-size: 15px; max-width: 68ch; }
+.card.compact { padding: 16px 18px; }
+.card.compact h3 { font-size: 1.05rem; }
+.card.compact p { font-size: 14.5px; color: var(--muted); }
+.metrics { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0 0 12px; padding: 0; list-style: none; font-family: var(--f-mono); font-size: 13px; }
+.metrics b { color: var(--accent); font-weight: 500; font-size: 1.05rem; margin-right: 6px; font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+.stack li { font-family: var(--f-mono); font-size: 12px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 3px; color: var(--key); background: var(--panel-2); }
+.card-foot { margin-top: auto; display: grid; gap: 10px; }
+.clone { display: flex; align-items: stretch; min-width: 0; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+.clone code { flex: 1; min-width: 0; padding: 7px 10px; font-family: var(--f-mono); font-size: 12px; color: var(--muted); overflow-x: auto; white-space: nowrap; }
+.clone code::before { content: "$ "; color: var(--accent); }
+.clone button { flex: none; border: 0; border-left: 1px solid var(--line); background: var(--panel-2); color: var(--muted); font-family: var(--f-mono); font-size: 12px; padding: 0 12px; cursor: pointer; }
+.clone button:hover { color: var(--accent); }
+.gh { font-family: var(--f-mono); font-size: 12.5px; color: var(--accent); text-decoration: none; justify-self: start; border-bottom: 1px solid currentColor; }
+
+/* flagship case studies */
+.flag { border-color: var(--accent); padding: 26px; }
+.flag .kicker { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+.flag h3 { font-size: 1.55rem; margin: 0 0 6px; }
+.flag .hook { font-family: var(--f-display); font-size: 1.15rem; font-weight: 500; line-height: 1.3; margin: 0 0 16px; max-width: 46ch; text-wrap: balance; }
+.flag .cols { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px 32px; margin-bottom: 4px; }
+.flag .cols > div { min-width: 0; }
+.flag p { font-size: 15.5px; }
+.mini { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); overflow: hidden; margin-bottom: 14px; }
+.mini .term-bar { padding: 6px 12px; }
+.mini pre { margin: 0; padding: 12px 14px; font-family: var(--f-mono); font-size: 12.5px; line-height: 1.7; overflow-x: auto; }
+.lesson { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 4px 0 18px; font-family: var(--f-display); font-size: 1.05rem; font-weight: 500; }
+.lesson span { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 2px; font-weight: 400; }
+.bullets { margin: 0 0 14px; padding-left: 18px; font-size: 15px; }
+.bullets li { margin-bottom: 3px; }
+
+/* stack tree */
+.reqs { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; min-width: 0; overflow: hidden; }
+.reqs pre { margin: 0; padding: 16px; font-family: var(--f-mono); font-size: 13px; line-height: 1.7; overflow-x: auto; color: var(--ink); }
+.tree-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 0 28px; }
+.tree-grid pre { padding-bottom: 6px; }
+
+/* log */
+.log { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 18px; }
+.entry { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 20px; padding-block: 16px; border-top: 1px solid var(--line); }
+.entry:first-child { border-top: 0; }
+.entry .when { font-family: var(--f-mono); font-size: 12.5px; color: var(--accent); padding-top: 3px; }
+.entry h3 { font-family: var(--f-display); font-weight: 600; font-size: 1.1rem; margin: 0; }
+.entry .org { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); margin: 2px 0 6px; }
+.entry p { margin: 0; font-size: 15px; max-width: 66ch; }
+.entry .stats { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0 0 6px; padding: 0; list-style: none; font-family: var(--f-mono); font-size: 13px; color: var(--ink); }
+.entry .stats b { color: var(--accent); font-weight: 500; }
+
+/* contact */
+.open-to { margin: 0 0 18px; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-family: var(--f-mono); font-size: 14px; }
+.contact-list li { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
+.contact-list .lab { color: var(--kw); min-width: 78px; }
+.copy { font-family: var(--f-mono); font-size: 12px; padding: 3px 9px; border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 3px; cursor: pointer; }
+.copy:hover { color: var(--accent); border-color: var(--accent); }
+footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+footer a:hover { color: var(--accent); border-color: var(--accent); }
+footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+
+@media (max-width: 780px) {
+  .hero-top, .flag .cols { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-block: 36px 36px; }
+  .entry { grid-template-columns: minmax(0, 1fr); }
+  section { padding-top: 40px; }
+  .flag { padding: 20px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .copy, .clone button, .bar nav a { transition: color .15s, border-color .15s, background .15s, filter .15s; }
+}
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <span class="path">kartik@iitj:<b>~/portfolio</b>$</span>
+    <nav aria-label="Sections">
+      <a href="#principles">principles</a>
+      <a href="#featured">featured</a>
+      <a href="#projects">projects</a>
+      <a href="#stack">stack</a>
+      <a href="#roles">roles</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-top">
+        <div>
+          <p class="who">Kartik Jain</p>
+          <h1>I build <span class="hl">ML systems</span>, not just models.</h1>
+          <p class="roles">ML Engineer · AI Engineer · Backend</p>
+          <p class="lede">Second-year B.Tech student at IIT Jodhpur (Civil and Infrastructure Engineering, minor in Artificial Intelligence) working across machine learning, RAG, recommender systems and backend engineering.</p>
+          <p class="lede">I build models, evaluate them properly, and turn them into usable applications through APIs, databases and deployment. I care about what makes ML systems trustworthy: data leakage, retrieval quality, evaluation and reproducibility. <b>I look for target leakage before I trust a metric.</b></p>
+          <div class="cta">
+            <a class="btn primary" href="#featured">View featured work</a>
+            <a class="btn" id="resume-btn" href="#contact" hidden>resume</a>
+          </div>
+        </div>
+
+        <div class="term" role="group" aria-label="profile.json">
+          <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio: cat profile.json</span></div>
+<pre><span class="c">{</span>
+  <span class="k">"name"</span>: <span class="s">"Kartik Jain"</span>,
+  <span class="k">"school"</span>: <span class="s">"IIT Jodhpur"</span>,
+  <span class="k">"degree"</span>: <span class="s">"B.Tech, Civil &amp; Infrastructure Engineering"</span>,
+  <span class="k">"minor"</span>: <span class="s">"Artificial Intelligence"</span>,
+  <span class="k">"batch"</span>: <span class="n">2024</span>,
+  <span class="k">"graduation"</span>: <span class="n">2028</span>,
+  <span class="k">"focus"</span>: [
+    <span class="s">"machine learning"</span>,
+    <span class="s">"AI / RAG"</span>,
+    <span class="s">"backend engineering"</span>,
+    <span class="s">"ML evaluation"</span>
+  ],
+  <span class="k">"languages"</span>: [<span class="s">"Python"</span>, <span class="s">"C++"</span>, <span class="s">"SQL"</span>, <span class="s">"JavaScript"</span>],
+  <span class="k">"currently"</span>: <span class="s">"ML systems, and research on explainable multimodal AI for leukemia diagnosis"</span>,
+  <span class="k">"open_to"</span>: <span class="s">"ML / AI / Software Engineering internships"</span>
+<span class="c">}</span></pre>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h2>bank-marketing / eval: roc_auc, axis 0.50 to 1.00</h2>
+        <div class="term" role="img" aria-label="Text bar chart. ROC-AUC with the call-duration feature is about 0.93. Without it, the shipped CatBoost model scores 0.803. Bars are drawn on a scale from 0.5 to 1.0.">
+          <div class="term-bar"><i></i><i></i><i></i><span>python eval.py --check-leakage</span></div>
+<pre><span class="c">with duration  </span> <span class="bar-a">███████████████████████████████████</span> <span class="n">~0.93</span>
+<span class="c">leakage-safe   </span> <span class="bar-b">████████████████████████</span> <span class="n">0.803</span>
+<span class="c">               </span> <span class="c">|0.5      |0.625    |0.75     |0.875    |1.0</span>
+<span class="kw">warning</span>: <span class="s">"duration"</span> is only known after the call. dropped.</pre>
+        </div>
+        <p><b>One feature, +0.13 ROC-AUC.</b> It cannot be used to decide who to call, so I removed it and shipped the 0.803 model.</p>
+      </div>
+    </div>
+
+    <section id="principles">
+      <h2 class="sec">Engineering principles <span class="cmd">cat engineering-principles.txt</span></h2>
+      <p class="sec-note">Each one comes from a project below.</p>
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio: cat engineering-principles.txt</span></div>
+        <ol class="principles">
+          <li><span class="no">01</span><h3>Evaluate before optimizing</h3><p>A high score is meaningless if the evaluation setup is wrong.</p></li>
+          <li><span class="no">02</span><h3>Prevent leakage</h3><p>Features unavailable at prediction time do not belong in the model.</p></li>
+          <li><span class="no">03</span><h3>Measure retrieval</h3><p>RAG quality needs retrieval metrics, not just a chatbot demo.</p></li>
+          <li><span class="no">04</span><h3>Build the service</h3><p>A model isn't the product. APIs, databases and interfaces matter.</p></li>
+          <li><span class="no">05</span><h3>Fail explicitly</h3><p>When confidence is low, refusing is better than hallucinating.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="featured">
+      <h2 class="sec">Featured <span class="cmd">ls ~/featured</span></h2>
+      <p class="sec-note">Five projects. The first two are case studies.</p>
+
+      <div class="stackcol">
+        <article class="card flag">
+          <p class="kicker">Case study 1 · ML · 2026</p>
+          <h3>Bank Marketing Campaign Response Prediction</h3>
+          <p class="hook">The interesting part wasn't the model. It was finding the leakage.</p>
+          <div class="cols">
+            <div>
+              <p>I built an end-to-end classification pipeline to predict whether a client would respond to a marketing campaign.</p>
+              <p>During evaluation, including call duration pushed ROC-AUC from 0.803 to about 0.93. The problem is that call duration is only known after the campaign interaction. It cannot be used when deciding which customer to contact.</p>
+              <p>I treated this as target leakage, removed the feature, and rebuilt the evaluation pipeline.</p>
+            </div>
+            <div>
+              <div class="mini">
+                <div class="term-bar"><i></i><i></i><i></i><span>final model</span></div>
+<pre><span class="k">roc_auc</span>     <span class="n">0.803</span>
+<span class="k">pr_auc</span>      <span class="n">0.456</span>
+<span class="k">validation</span>  <span class="s">5-fold stratified CV</span>
+<span class="k">models</span>      <span class="s">CatBoost, LightGBM, XGBoost,</span>
+            <span class="s">Random Forest, Logistic Regression</span></pre>
+              </div>
+              <p>The final CatBoost model is served through a Streamlit application with per-prediction feature importance.</p>
+            </div>
+          </div>
+          <div class="lesson"><span>Lesson</span>A better metric isn't necessarily a better model.</div>
+          <ul class="stack"><li>Python</li><li>CatBoost</li><li>LightGBM</li><li>XGBoost</li><li>scikit-learn</li><li>Streamlit</li></ul>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/Bank-Marketing-Campaign-Response-Prediction.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/Bank-Marketing-Campaign-Response-Prediction" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+
+        <article class="card flag">
+          <p class="kicker">Case study 2 · AI · RAG</p>
+          <h3>Engineering Copilot</h3>
+          <p class="hook">A RAG system for searching and answering questions over automotive engineering documents.</p>
+          <div class="cols">
+            <div>
+              <p>The system processes engineering PDFs into section-aware chunks, generates embeddings, and retrieves relevant passages using vector similarity. Answers include document, section and page citations rather than returning unsupported text.</p>
+              <p>I also added an explicit refusal mechanism. When retrieval confidence falls below a threshold, the system refuses to answer instead of guessing.</p>
+            </div>
+            <div>
+              <div class="mini">
+                <div class="term-bar"><i></i><i></i><i></i><span>evaluation</span></div>
+<pre><span class="k">recall@k</span>
+<span class="k">hit_rate</span>
+<span class="k">mrr</span>
+<span class="k">correct_refusal_rate</span></pre>
+              </div>
+            </div>
+          </div>
+          <ul class="stack"><li>FastAPI</li><li>LangChain</li><li>Chroma</li><li>Sentence Transformers</li><li>pdfplumber</li><li>Streamlit</li></ul>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/Engineering-Copilot-RAG-chatbot-for-automotive-engineering.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/Engineering-Copilot-RAG-chatbot-for-automotive-engineering" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+
+        <div class="repos">
+          <article class="card">
+            <div class="card-head"><h3>Movie Recommendation System</h3><span class="track">featured 3 · ml</span></div>
+            <p>A content-based recommendation engine that represents movies with TF-IDF features, reduces dimensionality with SVD, and ranks movies from a precomputed similarity matrix.</p>
+            <p>Includes fuzzy title search for fast recommendations. About 2,000 movies are included in the bundled model.</p>
+            <ul class="stack"><li>Python</li><li>Django</li><li>scikit-learn</li><li>pandas</li><li>SciPy</li></ul>
+            <div class="card-foot">
+              <div class="clone"><code>git clone https://github.com/Kartik8270/Movie-Recommendation-System.git</code><button type="button" class="cp">copy</button></div>
+              <a class="gh" href="https://github.com/Kartik8270/Movie-Recommendation-System" target="_blank" rel="noopener">open on github ↗</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head"><h3>LedgerFlow</h3><span class="track">featured 4 · backend</span></div>
+            <p>A fintech backend designed around transactional correctness.</p>
+            <ul class="bullets">
+              <li>Atomic balance updates</li>
+              <li>PostgreSQL referential integrity</li>
+              <li>JWT authentication</li>
+              <li>Role-based access control</li>
+              <li>Rate limiting</li>
+              <li>Swagger/OpenAPI documentation</li>
+            </ul>
+            <p>The goal was to make money movement safe at the database layer, not simply implement a collection of REST endpoints.</p>
+            <ul class="stack"><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Sequelize</li></ul>
+            <div class="card-foot">
+              <div class="clone"><code>git clone https://github.com/Kartik8270/LedgerFlow.git</code><button type="button" class="cp">copy</button></div>
+              <a class="gh" href="https://github.com/Kartik8270/LedgerFlow" target="_blank" rel="noopener">open on github ↗</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head"><h3>Network Packet Routing Simulator</h3><span class="track">featured 5 · algorithms</span></div>
+            <p>Dijkstra, Prim and Kruskal implemented from scratch in C++ with min-heaps, running in O((V+E) log V), and exposed through a four-endpoint Node.js API.</p>
+            <p>Edges carry two competing metrics, latency and cost. A D3.js front end draws the routing paths and spanning-tree overlays so the strategies can be compared visually.</p>
+            <ul class="stack"><li>C++</li><li>Node.js</li><li>Express</li><li>D3.js</li></ul>
+            <div class="card-foot">
+              <div class="clone"><code>git clone https://github.com/Kartik8270/Network-Packet-Routing-Simulator.git</code><button type="button" class="cp">copy</button></div>
+              <a class="gh" href="https://github.com/Kartik8270/Network-Packet-Routing-Simulator" target="_blank" rel="noopener">open on github ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="sec">More projects <span class="cmd">ls ~/projects</span></h2>
+      <p class="sec-note">Smaller builds, mostly apps with real-time data.</p>
+      <div class="repos">
+        <article class="card compact">
+          <div class="card-head"><h3>PaperTrade</h3><span class="track">backend</span></div>
+          <p>Virtual stock trading. A server-side clock replays market data in 30-minute steps so future prices are never exposed. Each order is one SQLite transaction.</p>
+          <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite</li></ul>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/-Virtual-Stock-Trading-Platform-.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/-Virtual-Stock-Trading-Platform-" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+        <article class="card compact">
+          <div class="card-head"><h3>Foody</h3><span class="track">app</span></div>
+          <p>Food delivery app with Firebase Auth, Firestore and Stripe payments. Order status syncs live between customer and admin screens.</p>
+          <ul class="stack"><li>Flutter</li><li>Firestore</li><li>Stripe</li></ul>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/foody.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/foody" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+        <article class="card compact">
+          <div class="card-head"><h3>Task Manager</h3><span class="track">app</span></div>
+          <p>Real-time task manager with live Firestore sync, persistent Firebase Auth sessions and REST API integration with a fallback.</p>
+          <ul class="stack"><li>Flutter</li><li>Firebase</li></ul>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/task-manager-app.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/task-manager-app" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+        <article class="card compact">
+          <div class="card-head"><h3>Real-Time Chat</h3><span class="track">app</span></div>
+          <p>Real-time messaging application. Source in the repository.</p>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/Real-Time-Chat-App.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/Real-Time-Chat-App" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+        <article class="card compact">
+          <div class="card-head"><h3>Expense Tracker</h3><span class="track">app</span></div>
+          <p>Personal expense tracking application. Source in the repository.</p>
+          <div class="card-foot">
+            <div class="clone"><code>git clone https://github.com/Kartik8270/Expense-tracker-.git</code><button type="button" class="cp">copy</button></div>
+            <a class="gh" href="https://github.com/Kartik8270/Expense-tracker-" target="_blank" rel="noopener">open on github ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2 class="sec">Stack <span class="cmd">cat requirements.txt</span></h2>
+      <p class="sec-note">Only tools I have used in the projects above.</p>
+      <div class="reqs">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio: cat requirements.txt</span></div>
+        <div class="tree-grid">
+<pre><span class="kw">machine-learning/</span>
+├── classification
+├── regression
+├── gradient boosting
+├── model evaluation
+├── feature importance
+└── leakage detection</pre>
+<pre><span class="kw">ai-engineering/</span>
+├── RAG
+├── embeddings
+├── vector retrieval
+├── chunking
+└── LLM applications</pre>
+<pre><span class="kw">ml-evaluation/</span>
+├── ROC-AUC
+├── PR-AUC
+├── F1
+├── Recall@K
+├── MRR
+└── cross-validation</pre>
+<pre><span class="kw">backend/</span>
+├── FastAPI
+├── Django
+├── Node.js
+├── REST APIs
+├── PostgreSQL
+├── SQLite
+├── JWT
+└── Swagger/OpenAPI</pre>
+        </div>
+<pre><span class="c"># tools</span>
+Python · C++ · SQL · Git · Docker
+scikit-learn · CatBoost · XGBoost · LightGBM
+LangChain · Chroma · Sentence Transformers
+FastAPI · Django · Node.js · PostgreSQL</pre>
+      </div>
+    </section>
+
+    <section id="current">
+      <h2 class="sec">Currently building <span class="cmd">cat current.log</span></h2>
+      <div class="stackcol">
+      <article class="card flag">
+        <p class="kicker">Research · early stage</p>
+        <h3>Explainable multimodal AI for acute leukemia diagnosis</h3>
+        <p class="hook">One explainable model that reads every modality together, instead of a separate model for each.</p>
+        <div class="cols">
+          <div>
+            <p>The research is developing an AI-enabled multimodal digital hematopathology platform for early diagnosis and genomic classification of acute leukemia (hematolymphoid malignancies). It combines CBC parameters, digital morphology, flow cytometry, cytogenetics and molecular genetics in a single model, for both morphologic and genomic classification.</p>
+            <p>I am starting with the literature on how leukemia diagnosis has evolved and how AI is applied to CBC parameters, digital morphology and flow cytometry.</p>
+          </div>
+          <div>
+            <div class="mini">
+              <div class="term-bar"><i></i><i></i><i></i><span>inputs</span></div>
+<pre><span class="k">cbc_parameters</span>
+<span class="k">digital_morphology</span>
+<span class="k">flow_cytometry</span>
+<span class="k">cytogenetics</span>
+<span class="k">molecular_genetics</span>
+<span class="c">→ one explainable model</span></pre>
+            </div>
+          </div>
+        </div>
+        <ul class="stack"><li>multimodal learning</li><li>explainable AI</li><li>medical AI</li></ul>
+      </article>
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio: cat current.log</span></div>
+<pre><span class="n">[ACTIVE]</span>
+
+<span class="kw">→</span> Researching explainable multimodal AI for acute leukemia diagnosis
+<span class="kw">→</span> Improving ML evaluation workflows
+<span class="kw">→</span> Building production-style RAG systems
+<span class="kw">→</span> Exploring agentic AI and tool-based LLM workflows
+<span class="kw">→</span> Strengthening backend architecture with FastAPI/PostgreSQL
+<span class="kw">→</span> Preparing for ML / AI engineering internships</pre>
+      </div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <h2 class="sec">Roles <span class="cmd">git log roles/ --stat</span></h2>
+      <p class="sec-note">Leadership at IIT Jodhpur and at Inter-IIT.</p>
+      <div class="log">
+        <div class="entry"><div class="when">2025 to 2026</div><div><h3>Joint Secretary</h3><div class="org">Dramatics Society, IIT Jodhpur</div><ul class="stats"><li><b>80+</b> members</li><li><b>20+</b> workshops and productions</li></ul><p>Budget, operations and team management.</p></div></div>
+        <div class="entry"><div class="when">2025</div><div><h3>Cult Captain</h3><div class="org">Inter-IIT Cultural Meet 8.0</div><p>Led IIT Jodhpur's cultural contingent at IIT Kanpur. Managed logistics, coordination and competitive-event strategy.</p></div></div>
+        <div class="entry"><div class="when">2025</div><div><h3>Assistant Head</h3><div class="org">Prometeo</div><p>Coordinated volunteers, operations and logistics for IIT Jodhpur's annual technical festival.</p></div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="sec">Contact <span class="cmd">echo $OPEN_TO</span></h2>
+      <div class="term open-to">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio: echo $OPEN_TO</span></div>
+<pre>ML Engineering
+AI / RAG Engineering
+Software Engineering
+Backend Engineering
+
+<span class="n">Available for internships.</span></pre>
+      </div>
+      <ul class="contact-list">
+        <li><span class="lab">email</span><span id="mail">b24ci1020@iitj.ac.in</span><button class="copy" id="copy-mail" type="button">copy</button></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>kartik8270 · IIT Jodhpur · <a href="https://github.com/Kartik8270" target="_blank" rel="noopener">github</a> · <a href="https://www.linkedin.com/in/kartik-jain-39889936b" target="_blank" rel="noopener">linkedin</a> · exit 0</footer>
+</div>
+
+<script>
+  // Set this to a public URL of your resume PDF (for example a GitHub raw link) to show the resume button.
+  var RESUME_URL = "";
+  (function () {
+    var rb = document.getElementById("resume-btn");
+    if (RESUME_URL) { rb.href = RESUME_URL; rb.target = "_blank"; rb.rel = "noopener"; rb.hidden = false; }
+
+    function flash(btn, text, back) { btn.textContent = text; setTimeout(function () { btn.textContent = back; }, 1500); }
+    function selectNode(node) {
+      var r = document.createRange(); r.selectNodeContents(node);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    function copyText(btn, text, node) {
+      var back = btn.textContent;
+      function fb() { selectNode(node); flash(btn, "selected", back); }
+      try { navigator.clipboard.writeText(text).then(function () { flash(btn, "copied", back); }, fb); } catch (e) { fb(); }
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll(".clone"), function (box) {
+      var code = box.querySelector("code"), btn = box.querySelector("button");
+      btn.addEventListener("click", function () { copyText(btn, code.textContent, code); });
+    });
+    var mailBtn = document.getElementById("copy-mail"), mail = document.getElementById("mail");
+    mailBtn.addEventListener("click", function () { copyText(mailBtn, mail.textContent, mail); });
+  })();
+</script>
+
+</body></html>
